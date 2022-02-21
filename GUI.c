@@ -3,9 +3,11 @@
 #include <stdint.h>
 #include <avr/interrupt.h>
 
-#include "init_lcd.h";
+#include "TinyTimber.h"
 
-uint16_t digitLookUp(uint8_t c) {
+#include "GUI.h"
+
+uint16_t digitLookUp(GUI *self, uint8_t c) {
 
 	if(c < 48 || c > 57) {
 		return 0;
@@ -28,7 +30,7 @@ uint16_t digitLookUp(uint8_t c) {
 	return binary[(c - 48)];
 }
 
-void writeChar(char ch, int pos) {
+void writeChar(GUI *self, char ch, int pos) {
 	// If pos is less than zero or greater than 5, do nothing
 	if(pos < 0 || pos > 5) {
 		return;
@@ -38,7 +40,7 @@ void writeChar(char ch, int pos) {
 	uint8_t nibble_0 = 0, nibble_1 = 0, nibble_2 = 0, nibble_3 = 0, oldValue = 0, mask = 0, increment = 0;
 
 	// Fetch the value needed to display number "ch" in LCDDRx
-	digitBinary = digitLookUp(ch);
+	digitBinary = digitLookUp(self, ch);
 
 	// Bitshift 1 bit to get valid values for incrementing the pointer
 	increment = pos >> 1;
@@ -91,7 +93,28 @@ void writeChar(char ch, int pos) {
 
 }
 
-void gui_test(int pos) {
-	int pulseValue = 0, position = pos;
-	
+void printAt(GUI *self, long num, int pos) {
+    int pp = pos;
+    writeChar(self, (num % 100) / 10 + '0', pp);
+    pp++;
+    writeChar(self, num % 10 + '0', pp);
 }
+
+void update_values(GUI *self) {
+	printAt(self, self->pulseValue1, 4);
+	printAt(self, self->pulseValue2, 0);
+}
+
+void increasePulse1Value(GUI *self) {
+	int num = self->pulseValue1;
+	num++;
+	self->pulseValue1 = num;
+	ASYNC(self, update_values, 0);
+	//pulseValue1++;
+}
+
+/*void decreasePulse1Value(GUI *self) {
+	if(self-> != 0) {
+		pulseValue1--;
+	}
+}*/

@@ -1,5 +1,7 @@
 #include <avr/io.h>
 
+#include "init_lcd.h"
+
 void init_lcd() {
 	// LCD Enable (LCDEN) & Low Power Waveform (LCDAB)
 	LCDCRA = (1<<LCDEN) | (1<<LCDAB) | (0<<LCDIF) | (0<<LCDIE) | (0<<LCDBL);
