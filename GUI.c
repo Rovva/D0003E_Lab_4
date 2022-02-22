@@ -102,11 +102,31 @@ void printAt(GUI *self, long num, int pos) {
 }
 
 void update_values(GUI *self) {
+	uint8_t mask;
+	uint8_t temp;
 	printAt(self, self->pulseValue1, 4);
 	printAt(self, self->pulseValue2, 0);
+	// LCDDR0 0b00000100 = 1
+	// LCDDR0 0b01000000 = 2
+
+
+	if(self->whichPulse == 0) {
+		LCDDR0 = LCDDR0 | 0b00000100;
+		mask = 0b10111111;
+		temp = LCDDR0 & mask;
+		LCDDR0 = temp;
+		//LCDDR0 = LCDDR0 ^ 0b01000000;
+	} else {
+		LCDDR0 = LCDDR0 | 0b01000000;
+		mask = 0b11111011;
+		temp = LCDDR0 & mask;
+		LCDDR0 = temp;
+	}
 }
 
 void modifyValues(GUI *self) {
+
+
 	ASYNC(self, update_values, 0);
 	if(((PINE >> 3) & 1) == 0) {
 		self->whichPulse = 0;
