@@ -6,6 +6,7 @@
 #include "TinyTimber.h"
 
 #include "GUI.h"
+#include "init_buttons.h"
 
 uint16_t digitLookUp(GUI *self, uint8_t c) {
 
@@ -105,16 +106,69 @@ void update_values(GUI *self) {
 	printAt(self, self->pulseValue2, 0);
 }
 
-void increasePulse1Value(GUI *self) {
-	int num = self->pulseValue1;
-	num++;
-	self->pulseValue1 = num;
+void modifyValues(GUI *self) {
 	ASYNC(self, update_values, 0);
-	//pulseValue1++;
+	if(((PINE >> 3) & 1) == 0) {
+		self->whichPulse = 0;
+	} else if(((PINE >> 2) & 1) == 0) {
+		self->whichPulse = 1;
+	}
+
+	if(((PINB >> 6) & 1) == 0) {
+		AFTER(MSEC(100), self, repeatIncrease, self->whichPulse );
+	} else if(((PINB >> 7) & 1) == 0) {
+		AFTER(MSEC(100), self, repeatDecrease, self->whichPulse );
+	}
 }
 
-/*void decreasePulse1Value(GUI *self) {
-	if(self-> != 0) {
-		pulseValue1--;
+void repeatIncrease(GUI *self, int pulseGenerator) {
+	if(((PINB >> 6) & 1) == 0) {
+		ASYNC(self, increaseValue, pulseGenerator);
+		ASYNC(self, update_values, 0);
+		AFTER(1000, self, repeatIncrease, pulseGenerator);
 	}
-}*/
+}
+
+void increaseValue(GUI *self, int pulseGenerator) {
+	int temp;
+
+	if(pulseGenerator == 0) {
+		temp = self->pulseValue1;
+		if(temp < 99) {
+			temp++;
+		}
+		self->pulseValue1 = temp;
+	} else if(pulseGenerator == 1) {
+		temp = self->pulseValue2;
+		if(temp < 99) {
+			temp++;
+		}
+		self->pulseValue2 = temp;
+	}
+}
+
+void repeatDecrease(GUI *self, int pulseGenerator) {
+	if(((PINB >> 7) & 1) == 0) {
+		ASYNC(self, decreaseValue, pulseGenerator);
+		ASYNC(self, update_values, 0);
+		AFTER(1000, self, repeatDecrease, pulseGenerator);
+	}
+}
+
+void decreaseValue(GUI *self, int pulseGenerator) {
+	int temp;
+
+	if(pulseGenerator == 0) {
+		temp = self->pulseValue1;
+		if(temp > 0) {
+			temp--;
+		}
+		self->pulseValue1 = temp;
+	} else if(pulseGenerator == 1) {
+		temp = self->pulseValue2;
+		if(temp > 0) {
+			temp--;
+		}
+		self->pulseValue2 = temp;
+	}
+}

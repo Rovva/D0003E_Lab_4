@@ -12,16 +12,23 @@
 
 typedef struct {
 	Object super;
-	int pulseValue1;
-	int pulseValue2;
-	int whichPulse;
+	uint8_t pulseValue1;
+	uint8_t pulseValue2;
+	uint8_t whichPulse;
 } GUI;
+
 uint16_t digitLookUp(GUI *self, uint8_t c);
 void writeChar(GUI *self, char ch, int pos);
 void printAt(GUI *self, long num, int pos);
+
 void update_values(GUI *self);
-void increasePulse1Value(GUI *self);
-//void decreasePulse1Value(GUI *self);
+void modifyValues(GUI *self);
+
+void repeatIncrease(GUI *self, int pulseGenerator);
+void increaseValue(GUI *self, int pulseGenerator);
+
+void decreaseValue(GUI *self, int pulseGenerator);
+void repeatDecrease(GUI *self, int pulseGenerator);
 
 #define init_GUI(){ initObject(), 1, 0, 0 }
 

@@ -10,11 +10,10 @@ GUI gui = init_GUI();
 
 int main(void)
 {
-	CLKPR = 0x80;
-	CLKPR = 0x00;
 	init_lcd();
 	init_buttons();
 
-	INSTALL(&gui, increasePulse1Value, IRQ_PCINT1);
+	INSTALL(&gui, modifyValues, IRQ_PCINT1);
+	INSTALL(&gui, modifyValues, IRQ_PCINT0);
 	return TINYTIMBER(&gui, update_values, 0);
 }
