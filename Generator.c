@@ -6,6 +6,7 @@
 #include "Generator.h"
 #include "Writer.h"
 
+// Write code to handle a 0 in value AND READ UP ABOUT PWM
 void updatePulseValue(Generator *self) {
 	if(self->updated == 0) {
 		uint8_t temp = self->CurrentHzValue;
@@ -16,19 +17,24 @@ void updatePulseValue(Generator *self) {
 		self->CurrentHzValue = self->OldHzValue;
 		self->OldHzValue = 0;
 		self->updated = 0;
+		updateWriter(self);
 	}
 
 }
 
 void increaseFrequency(Generator *self) {
-	if(self->CurrentHzValue == 0) {
-		updateWriter(self);
-	}
+
 	uint8_t temp;
 	temp = self->CurrentHzValue;
 	if(temp < 99) {
-		temp++;
-		self->CurrentHzValue = temp;
+		if(self->CurrentHzValue == 0) {
+			temp++;
+			self->CurrentHzValue = temp;
+			updateWriter(self);
+		} else {
+			temp++;
+			self->CurrentHzValue = temp;
+		}
 		//updateWriter(self);
 	}
 }
@@ -43,6 +49,8 @@ void decreaseFrequency(Generator *self) {
 }
 
 void updateWriter(Generator *self) {
-	SYNC(self->writer, writeToPort, self->GeneratorNr);
-	AFTER(MSEC(2000)/(self->CurrentHzValue), self, updateWriter, 0);
+	if(self->CurrentHzValue > 0) {
+		SYNC(self->writer, writeToPort, self->GeneratorNr);
+		AFTER((MSEC(1000)/(self->CurrentHzValue)/2), self, updateWriter, 0);
+	} // Write code to turn off the generator
 }

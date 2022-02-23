@@ -105,6 +105,12 @@ void printAt(GUI *self, long num, int pos) {
 void update_values(GUI *self) {
 	uint8_t mask;
 	uint8_t temp;
+
+	/*if(self->firstRun == true) {
+		ASYNC(self->generator1, updateWriter, self->generator1);
+		ASYNC(self->generator2, updateWriter, self->generator2);
+		self->firstRun = false;
+	}*/
 	printAt(self, self->generator1->CurrentHzValue, 0);
 	printAt(self, self->generator2->CurrentHzValue, 4);
 

@@ -7,7 +7,8 @@
 
 #ifndef GUI_H_
 #define GUI_H_
-
+#include <stdbool.h>
+#include <stdint.h>
 #include "Generator.h"
 
 typedef struct {
@@ -19,6 +20,7 @@ typedef struct {
 	Generator *generator2;
 	uint8_t previousButton;
 	uint8_t firstpress;
+	bool firstRun;
 } GUI;
 
 uint16_t digitLookUp(GUI *self, uint8_t c);
@@ -35,6 +37,6 @@ void increaseValue(GUI *self, int pulseGenerator);
 void decreaseValue(GUI *self, int pulseGenerator);
 void repeatDecrease(GUI *self, int pulseGenerator);
 
-#define init_GUI(gen1, gen2){ initObject(), 1, 0, 0, gen1, gen2, 0, 0 }
+#define init_GUI(gen1, gen2){ initObject(), 1, 0, 0, gen1, gen2, 0, 0, true }
 
 #endif /* GUI_H_ */
