@@ -16,6 +16,7 @@ typedef struct {
 	uint8_t pulseValue2;
 	uint8_t whichPulse;
 	uint8_t previousButton;
+	uint8_t firstpress;
 } GUI;
 
 uint16_t digitLookUp(GUI *self, uint8_t c);

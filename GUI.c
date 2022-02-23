@@ -104,11 +104,10 @@ void printAt(GUI *self, long num, int pos) {
 void update_values(GUI *self) {
 	uint8_t mask;
 	uint8_t temp;
-	printAt(self, self->pulseValue1, 4);
-	printAt(self, self->pulseValue2, 0);
+	printAt(self, self->pulseValue1, 0);
+	printAt(self, self->pulseValue2, 4);
 	// LCDDR0 0b00000100 = 1
 	// LCDDR0 0b01000000 = 2
-
 
 	if(self->whichPulse == 0) {
 		LCDDR0 = LCDDR0 | 0b00000100;
@@ -126,11 +125,10 @@ void update_values(GUI *self) {
 
 void modifyValues(GUI *self) {
 
-
 	ASYNC(self, update_values, 0);
-	if(((PINE >> 3) & 1) == 0) {
+	if(((PINE >> 2) & 1) == 0) {
 		self->whichPulse = 0;
-	} else if(((PINE >> 2) & 1) == 0) {
+	} else if(((PINE >> 3) & 1) == 0) {
 		self->whichPulse = 1;
 	}
 
@@ -145,7 +143,7 @@ void repeatIncrease(GUI *self, int pulseGenerator) {
 	if(((PINB >> 6) & 1) == 0) {
 		ASYNC(self, increaseValue, pulseGenerator);
 		ASYNC(self, update_values, 0);
-		AFTER(1000, self, repeatIncrease, pulseGenerator);
+		AFTER(MSEC(1500), self, repeatIncrease, pulseGenerator);
 	}
 }
 
@@ -171,7 +169,7 @@ void repeatDecrease(GUI *self, int pulseGenerator) {
 	if(((PINB >> 7) & 1) == 0) {
 		ASYNC(self, decreaseValue, pulseGenerator);
 		ASYNC(self, update_values, 0);
-		AFTER(1000, self, repeatDecrease, pulseGenerator);
+		AFTER(MSEC(1500), self, repeatDecrease, pulseGenerator);
 	}
 }
 
