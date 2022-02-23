@@ -2,11 +2,15 @@
 
 #include "TinyTimber.h"
 
-#include "GUI.h"
 #include "init_lcd.h"
 #include "init_buttons.h"
 
-GUI gui = init_GUI();
+#include "GUI.h"
+#include "Generator.h"
+
+Generator gen1 = init_Generator(1, 0);
+Generator gen2 = init_Generator(0, 1);
+GUI gui = init_GUI(&gen1, &gen2);
 
 int main(void)
 {

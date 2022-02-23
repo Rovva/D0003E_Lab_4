@@ -8,13 +8,15 @@
 #ifndef GUI_H_
 #define GUI_H_
 
-
+#include "Generator.h"
 
 typedef struct {
 	Object super;
 	uint8_t pulseValue1;
 	uint8_t pulseValue2;
 	uint8_t whichPulse;
+	Generator *generator1;
+	Generator *generator2;
 	uint8_t previousButton;
 	uint8_t firstpress;
 } GUI;
@@ -32,6 +34,6 @@ void increaseValue(GUI *self, int pulseGenerator);
 void decreaseValue(GUI *self, int pulseGenerator);
 void repeatDecrease(GUI *self, int pulseGenerator);
 
-#define init_GUI(){ initObject(), 1, 0, 0 }
+#define init_GUI(gen1, gen2){ initObject(), 1, 0, 0, gen1, gen2, 0, 0 }
 
 #endif /* GUI_H_ */
