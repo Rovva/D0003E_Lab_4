@@ -1,7 +1,7 @@
 Archive member included to satisfy reference by file (symbol)
 
 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
-                              GUI.o (__divmodsi4)
+                              Generator.o (__divmodsi4)
 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
                               /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o) (__negsi2)
 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
@@ -9,7 +9,7 @@ Archive member included to satisfy reference by file (symbol)
 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
                               main.o (__do_copy_data)
 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
-                              TinyTimber.o (__do_clear_bss)
+                              main.o (__do_clear_bss)
 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
                               /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o) (__udivmodsi4)
 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(setjmp.o)
@@ -154,7 +154,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x3254
+.text           0x0000000000000000     0x33ae
  *(.vectors)
  .vectors       0x0000000000000000       0x5c /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega169.o
                 0x0000000000000000                __vectors
@@ -240,236 +240,242 @@ END GROUP
  .text.init_buttons
                 0x0000000000000114       0x42 init_buttons.o
                 0x0000000000000114                init_buttons
+ .text.writeToPort
+                0x0000000000000156       0x50 Writer.o
+                0x0000000000000156                writeToPort
  .text.__vector_1
-                0x0000000000000156      0x110 TinyTimber.o
-                0x0000000000000156                __vector_1
+                0x00000000000001a6      0x110 TinyTimber.o
+                0x00000000000001a6                __vector_1
  .text.__vector_2
-                0x0000000000000266      0x110 TinyTimber.o
-                0x0000000000000266                __vector_2
+                0x00000000000002b6      0x110 TinyTimber.o
+                0x00000000000002b6                __vector_2
  .text.__vector_3
-                0x0000000000000376      0x110 TinyTimber.o
-                0x0000000000000376                __vector_3
+                0x00000000000003c6      0x110 TinyTimber.o
+                0x00000000000003c6                __vector_3
  .text.__vector_4
-                0x0000000000000486      0x110 TinyTimber.o
-                0x0000000000000486                __vector_4
+                0x00000000000004d6      0x110 TinyTimber.o
+                0x00000000000004d6                __vector_4
  .text.__vector_5
-                0x0000000000000596      0x110 TinyTimber.o
-                0x0000000000000596                __vector_5
+                0x00000000000005e6      0x110 TinyTimber.o
+                0x00000000000005e6                __vector_5
  .text.__vector_10
-                0x00000000000006a6      0x110 TinyTimber.o
-                0x00000000000006a6                __vector_10
+                0x00000000000006f6      0x110 TinyTimber.o
+                0x00000000000006f6                __vector_10
  .text.__vector_11
-                0x00000000000007b6      0x110 TinyTimber.o
-                0x00000000000007b6                __vector_11
+                0x0000000000000806      0x110 TinyTimber.o
+                0x0000000000000806                __vector_11
  .text.__vector_12
-                0x00000000000008c6      0x110 TinyTimber.o
-                0x00000000000008c6                __vector_12
+                0x0000000000000916      0x110 TinyTimber.o
+                0x0000000000000916                __vector_12
  .text.__vector_13
-                0x00000000000009d6      0x110 TinyTimber.o
-                0x00000000000009d6                __vector_13
+                0x0000000000000a26      0x110 TinyTimber.o
+                0x0000000000000a26                __vector_13
  .text.__vector_14
-                0x0000000000000ae6      0x110 TinyTimber.o
-                0x0000000000000ae6                __vector_14
+                0x0000000000000b36      0x110 TinyTimber.o
+                0x0000000000000b36                __vector_14
  .text.__vector_15
-                0x0000000000000bf6      0x110 TinyTimber.o
-                0x0000000000000bf6                __vector_15
+                0x0000000000000c46      0x110 TinyTimber.o
+                0x0000000000000c46                __vector_15
  .text.__vector_16
-                0x0000000000000d06      0x110 TinyTimber.o
-                0x0000000000000d06                __vector_16
+                0x0000000000000d56      0x110 TinyTimber.o
+                0x0000000000000d56                __vector_16
  .text.__vector_17
-                0x0000000000000e16      0x110 TinyTimber.o
-                0x0000000000000e16                __vector_17
+                0x0000000000000e66      0x110 TinyTimber.o
+                0x0000000000000e66                __vector_17
  .text.__vector_18
-                0x0000000000000f26      0x110 TinyTimber.o
-                0x0000000000000f26                __vector_18
+                0x0000000000000f76      0x110 TinyTimber.o
+                0x0000000000000f76                __vector_18
  .text.__vector_19
-                0x0000000000001036      0x110 TinyTimber.o
-                0x0000000000001036                __vector_19
+                0x0000000000001086      0x110 TinyTimber.o
+                0x0000000000001086                __vector_19
  .text.__vector_20
-                0x0000000000001146      0x110 TinyTimber.o
-                0x0000000000001146                __vector_20
+                0x0000000000001196      0x110 TinyTimber.o
+                0x0000000000001196                __vector_20
  .text.__vector_21
-                0x0000000000001256      0x110 TinyTimber.o
-                0x0000000000001256                __vector_21
+                0x00000000000012a6      0x110 TinyTimber.o
+                0x00000000000012a6                __vector_21
  .text.__vector_22
-                0x0000000000001366      0x110 TinyTimber.o
-                0x0000000000001366                __vector_22
+                0x00000000000013b6      0x110 TinyTimber.o
+                0x00000000000013b6                __vector_22
  .text.enqueueByDeadline
-                0x0000000000001476       0xbc TinyTimber.o
-                0x0000000000001476                enqueueByDeadline
+                0x00000000000014c6       0xbc TinyTimber.o
+                0x00000000000014c6                enqueueByDeadline
  .text.enqueueByBaseline
-                0x0000000000001532       0xbc TinyTimber.o
-                0x0000000000001532                enqueueByBaseline
- .text.dequeue  0x00000000000015ee       0x7a TinyTimber.o
-                0x00000000000015ee                dequeue
- .text.insert   0x0000000000001668       0x46 TinyTimber.o
-                0x0000000000001668                insert
- .text.push     0x00000000000016ae       0x46 TinyTimber.o
-                0x00000000000016ae                push
- .text.pop      0x00000000000016f4       0x44 TinyTimber.o
-                0x00000000000016f4                pop
- .text.remove   0x0000000000001738       0xb2 TinyTimber.o
+                0x0000000000001582       0xbc TinyTimber.o
+                0x0000000000001582                enqueueByBaseline
+ .text.dequeue  0x000000000000163e       0x7a TinyTimber.o
+                0x000000000000163e                dequeue
+ .text.insert   0x00000000000016b8       0x46 TinyTimber.o
+                0x00000000000016b8                insert
+ .text.push     0x00000000000016fe       0x46 TinyTimber.o
+                0x00000000000016fe                push
+ .text.pop      0x0000000000001744       0x44 TinyTimber.o
+                0x0000000000001744                pop
+ .text.remove   0x0000000000001788       0xb2 TinyTimber.o
  .text.__vector_9
-                0x00000000000017ea      0x11c TinyTimber.o
-                0x00000000000017ea                __vector_9
+                0x000000000000183a      0x11c TinyTimber.o
+                0x000000000000183a                __vector_9
  .text.__vector_7
-                0x0000000000001906      0x1fe TinyTimber.o
-                0x0000000000001906                __vector_7
+                0x0000000000001956      0x1fe TinyTimber.o
+                0x0000000000001956                __vector_7
  .text.dispatch
-                0x0000000000001b04       0x46 TinyTimber.o
- .text.run      0x0000000000001b4a      0x13a TinyTimber.o
- .text.idle     0x0000000000001c84       0x1c TinyTimber.o
+                0x0000000000001b54       0x46 TinyTimber.o
+ .text.run      0x0000000000001b9a      0x13a TinyTimber.o
+ .text.idle     0x0000000000001cd4       0x1c TinyTimber.o
  .text.schedule
-                0x0000000000001ca0       0xa8 TinyTimber.o
- .text.async    0x0000000000001d48      0x32e TinyTimber.o
-                0x0000000000001d48                async
- .text.sync     0x0000000000002076      0x1a8 TinyTimber.o
-                0x0000000000002076                sync
- .text.ABORT    0x000000000000221e       0xe4 TinyTimber.o
-                0x000000000000221e                ABORT
- .text.T_RESET  0x0000000000002302       0x5e TinyTimber.o
-                0x0000000000002302                T_RESET
+                0x0000000000001cf0       0xa8 TinyTimber.o
+ .text.async    0x0000000000001d98      0x32e TinyTimber.o
+                0x0000000000001d98                async
+ .text.sync     0x00000000000020c6      0x1a8 TinyTimber.o
+                0x00000000000020c6                sync
+ .text.ABORT    0x000000000000226e       0xe4 TinyTimber.o
+                0x000000000000226e                ABORT
+ .text.T_RESET  0x0000000000002352       0x5e TinyTimber.o
+                0x0000000000002352                T_RESET
  .text.T_SAMPLE
-                0x0000000000002360       0x68 TinyTimber.o
-                0x0000000000002360                T_SAMPLE
+                0x00000000000023b0       0x68 TinyTimber.o
+                0x00000000000023b0                T_SAMPLE
  .text.CURRENT_OFFSET
-                0x00000000000023c8      0x112 TinyTimber.o
-                0x00000000000023c8                CURRENT_OFFSET
+                0x0000000000002418      0x112 TinyTimber.o
+                0x0000000000002418                CURRENT_OFFSET
  .text.initialize
-                0x00000000000024da      0x1e2 TinyTimber.o
- .text.install  0x00000000000026bc       0x86 TinyTimber.o
-                0x00000000000026bc                install
+                0x000000000000252a      0x1e2 TinyTimber.o
+ .text.install  0x000000000000270c       0x86 TinyTimber.o
+                0x000000000000270c                install
  .text.tinytimber
-                0x0000000000002742       0x9e TinyTimber.o
-                0x0000000000002742                tinytimber
+                0x0000000000002792       0x9e TinyTimber.o
+                0x0000000000002792                tinytimber
  .text.updatePulseValue
-                0x00000000000027e0       0x40 Generator.o
-                0x00000000000027e0                updatePulseValue
- .text.getGeneratorNumber
-                0x0000000000002820       0x28 Generator.o
-                0x0000000000002820                getGeneratorNumber
- .text.getCurrentPulseValue
-                0x0000000000002848       0x28 Generator.o
-                0x0000000000002848                getCurrentPulseValue
- .text.getOldPulseValue
-                0x0000000000002870       0x28 Generator.o
-                0x0000000000002870                getOldPulseValue
+                0x0000000000002830       0x72 Generator.o
+                0x0000000000002830                updatePulseValue
+ .text.increaseFrequency
+                0x00000000000028a2       0x52 Generator.o
+                0x00000000000028a2                increaseFrequency
+ .text.decreaseFrequency
+                0x00000000000028f4       0x3e Generator.o
+                0x00000000000028f4                decreaseFrequency
+ .text.updateWriter
+                0x0000000000002932       0xae Generator.o
+                0x0000000000002932                updateWriter
  .text.digitLookUp
-                0x0000000000002898       0xae GUI.o
-                0x0000000000002898                digitLookUp
+                0x00000000000029e0       0xae GUI.o
+                0x00000000000029e0                digitLookUp
  .text.writeChar
-                0x0000000000002946      0x19a GUI.o
-                0x0000000000002946                writeChar
- .text.printAt  0x0000000000002ae0       0xba GUI.o
-                0x0000000000002ae0                printAt
+                0x0000000000002a8e      0x19a GUI.o
+                0x0000000000002a8e                writeChar
+ .text.printAt  0x0000000000002c28       0xba GUI.o
+                0x0000000000002c28                printAt
  .text.update_values
-                0x0000000000002b9a       0xce GUI.o
-                0x0000000000002b9a                update_values
+                0x0000000000002ce2       0xda GUI.o
+                0x0000000000002ce2                update_values
+ .text.changeGenerator
+                0x0000000000002dbc       0x9e GUI.o
+                0x0000000000002dbc                changeGenerator
  .text.modifyValues
-                0x0000000000002c68      0x216 GUI.o
-                0x0000000000002c68                modifyValues
+                0x0000000000002e5a      0x172 GUI.o
+                0x0000000000002e5a                modifyValues
  .text.repeatIncrease
-                0x0000000000002e7e       0xd0 GUI.o
-                0x0000000000002e7e                repeatIncrease
+                0x0000000000002fcc       0xd0 GUI.o
+                0x0000000000002fcc                repeatIncrease
  .text.increaseValue
-                0x0000000000002f4e       0x98 GUI.o
-                0x0000000000002f4e                increaseValue
+                0x000000000000309c       0x9e GUI.o
+                0x000000000000309c                increaseValue
  .text.repeatDecrease
-                0x0000000000002fe6       0xce GUI.o
-                0x0000000000002fe6                repeatDecrease
+                0x000000000000313a       0xce GUI.o
+                0x000000000000313a                repeatDecrease
  .text.decreaseValue
-                0x00000000000030b4       0x98 GUI.o
-                0x00000000000030b4                decreaseValue
+                0x0000000000003208       0x9e GUI.o
+                0x0000000000003208                decreaseValue
  .text.libgcc.mul
-                0x000000000000314c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000032a6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.div
-                0x000000000000314c       0x2e /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
-                0x000000000000314c                __divmodsi4
- .text.libgcc   0x000000000000317a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000032a6       0x2e /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000032a6                __divmodsi4
+ .text.libgcc   0x00000000000032d4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.prologue
-                0x000000000000317a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000032d4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.builtins
-                0x000000000000317a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000032d4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.fmul
-                0x000000000000317a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000032d4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.fixed
-                0x000000000000317a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+                0x00000000000032d4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
  .text.libgcc.mul
-                0x000000000000317a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000032d4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.div
-                0x000000000000317a       0x10 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
-                0x000000000000317a                __negsi2
- .text.libgcc   0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000032d4       0x10 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000032d4                __negsi2
+ .text.libgcc   0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.prologue
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.builtins
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.fmul
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.fixed
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
  .text.libgcc.mul
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.div
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
- .text.libgcc   0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc   0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.prologue
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.builtins
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.fmul
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.fixed
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.mul
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.div
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
- .text.libgcc   0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.prologue
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.builtins
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.fmul
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.fixed
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.mul
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.div
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
- .text.libgcc   0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.prologue
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.builtins
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.fmul
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.mul
-                0x000000000000318a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x00000000000032e4        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.div
-                0x000000000000318a       0x44 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
-                0x000000000000318a                __udivmodsi4
- .text.libgcc   0x00000000000031ce        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x00000000000032e4       0x44 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x00000000000032e4                __udivmodsi4
+ .text.libgcc   0x0000000000003328        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.prologue
-                0x00000000000031ce        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x0000000000003328        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.builtins
-                0x00000000000031ce        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x0000000000003328        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.fmul
-                0x00000000000031ce        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x0000000000003328        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.libgcc.fixed
-                0x00000000000031ce        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+                0x0000000000003328        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .text.avr-libc
-                0x00000000000031ce       0x82 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(setjmp.o)
-                0x00000000000031ce                setjmp
-                0x000000000000320e                longjmp
-                0x0000000000003250                . = ALIGN (0x2)
+                0x0000000000003328       0x82 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(setjmp.o)
+                0x0000000000003328                setjmp
+                0x0000000000003368                longjmp
+                0x00000000000033aa                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000003250        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
-                0x0000000000003250                exit
-                0x0000000000003250                _exit
+ .fini9         0x00000000000033aa        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000033aa                exit
+                0x00000000000033aa                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -488,11 +494,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000003250        0x4 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .fini0         0x00000000000033aa        0x4 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000003254                _etext = .
+                0x00000000000033ae                _etext = .
 
-.data           0x0000000000800100       0x24 load address 0x0000000000003254
+.data           0x0000000000800100       0x2a load address 0x00000000000033ae
                 0x0000000000800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega169.o
@@ -511,77 +517,79 @@ END GROUP
  .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
  .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(setjmp.o)
  *(.data*)
- .data.gen1     0x0000000000800100        0x7 main.o
+ .data.gen1     0x0000000000800100        0xa main.o
                 0x0000000000800100                gen1
- .data.gen2     0x0000000000800107        0x7 main.o
-                0x0000000000800107                gen2
- .data.gui      0x000000000080010e        0xd main.o
-                0x000000000080010e                gui
- .data.msgPool  0x000000000080011b        0x2 TinyTimber.o
-                0x000000000080011b                msgPool
+ .data.gen2     0x000000000080010a        0xa main.o
+                0x000000000080010a                gen2
+ .data.gui      0x0000000000800114        0xd main.o
+                0x0000000000800114                gui
+ .data.msgPool  0x0000000000800121        0x2 TinyTimber.o
+                0x0000000000800121                msgPool
  .data.threadPool
-                0x000000000080011d        0x2 TinyTimber.o
-                0x000000000080011d                threadPool
+                0x0000000000800123        0x2 TinyTimber.o
+                0x0000000000800123                threadPool
  .data.activeStack
-                0x000000000080011f        0x2 TinyTimber.o
-                0x000000000080011f                activeStack
- .data.current  0x0000000000800121        0x2 TinyTimber.o
-                0x0000000000800121                current
+                0x0000000000800125        0x2 TinyTimber.o
+                0x0000000000800125                activeStack
+ .data.current  0x0000000000800127        0x2 TinyTimber.o
+                0x0000000000800127                current
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.r*)
-                0x0000000000800124                . = ALIGN (0x2)
- *fill*         0x0000000000800123        0x1 
-                0x0000000000800124                _edata = .
-                0x0000000000800124                PROVIDE (__data_end, .)
+                0x000000000080012a                . = ALIGN (0x2)
+ *fill*         0x0000000000800129        0x1 
+                0x000000000080012a                _edata = .
+                0x000000000080012a                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800124      0x353
-                0x0000000000800124                PROVIDE (__bss_start, .)
+.bss            0x000000000080012a      0x357
+                0x000000000080012a                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x0000000000800124        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega169.o
- .bss           0x0000000000800124        0x0 main.o
- .bss           0x0000000000800124        0x0 init_lcd.o
- .bss           0x0000000000800124        0x0 init_buttons.o
- .bss           0x0000000000800124        0x0 Writer.o
- .bss           0x0000000000800124        0x0 TinyTimber.o
- .bss           0x0000000000800124        0x0 Generator.o
- .bss           0x0000000000800124        0x0 GUI.o
- .bss           0x0000000000800124        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
- .bss           0x0000000000800124        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
- .bss           0x0000000000800124        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
- .bss           0x0000000000800124        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
- .bss           0x0000000000800124        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
- .bss           0x0000000000800124        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
- .bss           0x0000000000800124        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(setjmp.o)
+ .bss           0x000000000080012a        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega169.o
+ .bss           0x000000000080012a        0x0 main.o
+ .bss           0x000000000080012a        0x0 init_lcd.o
+ .bss           0x000000000080012a        0x0 init_buttons.o
+ .bss           0x000000000080012a        0x0 Writer.o
+ .bss           0x000000000080012a        0x0 TinyTimber.o
+ .bss           0x000000000080012a        0x0 Generator.o
+ .bss           0x000000000080012a        0x0 GUI.o
+ .bss           0x000000000080012a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+ .bss           0x000000000080012a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+ .bss           0x000000000080012a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .bss           0x000000000080012a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+ .bss           0x000000000080012a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x000000000080012a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+ .bss           0x000000000080012a        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(setjmp.o)
  *(.bss*)
- .bss.msgQ      0x0000000000800124        0x2 TinyTimber.o
-                0x0000000000800124                msgQ
- .bss.timerQ    0x0000000000800126        0x2 TinyTimber.o
-                0x0000000000800126                timerQ
+ .bss.writer    0x000000000080012a        0x4 main.o
+                0x000000000080012a                writer
+ .bss.msgQ      0x000000000080012e        0x2 TinyTimber.o
+                0x000000000080012e                msgQ
+ .bss.timerQ    0x0000000000800130        0x2 TinyTimber.o
+                0x0000000000800130                timerQ
  .bss.timestamp
-                0x0000000000800128        0x4 TinyTimber.o
-                0x0000000000800128                timestamp
+                0x0000000000800132        0x4 TinyTimber.o
+                0x0000000000800132                timestamp
  .bss.overflows
-                0x000000000080012c        0x2 TinyTimber.o
-                0x000000000080012c                overflows
+                0x0000000000800136        0x2 TinyTimber.o
+                0x0000000000800136                overflows
  *(COMMON)
- COMMON         0x000000000080012e      0x349 TinyTimber.o
-                0x000000000080012e                otable
-                0x0000000000800152                threads
-                0x00000000008001c6                mtable
-                0x00000000008001ea                thread0
-                0x0000000000800207                messages
-                0x00000000008002f7                stacks
-                0x0000000000800477                PROVIDE (__bss_end, .)
-                0x0000000000003254                __data_load_start = LOADADDR (.data)
-                0x0000000000003278                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0000000000800138      0x349 TinyTimber.o
+                0x0000000000800138                otable
+                0x000000000080015c                threads
+                0x00000000008001d0                mtable
+                0x00000000008001f4                thread0
+                0x0000000000800211                messages
+                0x0000000000800301                stacks
+                0x0000000000800481                PROVIDE (__bss_end, .)
+                0x00000000000033ae                __data_load_start = LOADADDR (.data)
+                0x00000000000033d8                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800477        0x0
+.noinit         0x0000000000800481        0x0
                 [!provide]                        PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                        PROVIDE (__noinit_end, .)
-                0x0000000000800477                _end = .
+                0x0000000000800481                _end = .
                 [!provide]                        PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
@@ -603,25 +611,25 @@ END GROUP
 .user_signatures
  *(.user_signatures*)
 
-.stab           0x0000000000000000     0x3a8c
+.stab           0x0000000000000000     0x3b10
  *(.stab)
- .stab          0x0000000000000000      0x5ac main.o
- .stab          0x00000000000005ac      0x30c init_lcd.o
+ .stab          0x0000000000000000      0x5dc main.o
+ .stab          0x00000000000005dc      0x30c init_lcd.o
                                         0x4d4 (size before relaxing)
- .stab          0x00000000000008b8      0x318 init_buttons.o
+ .stab          0x00000000000008e8      0x318 init_buttons.o
                                         0x4e0 (size before relaxing)
- .stab          0x0000000000000bd0      0x270 Writer.o
-                                        0x27c (size before relaxing)
- .stab          0x0000000000000e40     0x1c38 TinyTimber.o
+ .stab          0x0000000000000c00      0x33c Writer.o
+                                        0x570 (size before relaxing)
+ .stab          0x0000000000000f3c     0x1c38 TinyTimber.o
                                        0x1e54 (size before relaxing)
- .stab          0x0000000000002a78      0x498 Generator.o
-                                        0x6cc (size before relaxing)
- .stab          0x0000000000002f10      0xb7c GUI.o
-                                        0xdc8 (size before relaxing)
+ .stab          0x0000000000002b74      0x504 Generator.o
+                                        0x750 (size before relaxing)
+ .stab          0x0000000000003078      0xa98 GUI.o
+                                        0xcfc (size before relaxing)
 
-.stabstr        0x0000000000000000     0x1975
+.stabstr        0x0000000000000000     0x1a08
  *(.stabstr)
- .stabstr       0x0000000000000000     0x1975 main.o
+ .stabstr       0x0000000000000000     0x1a08 main.o
 
 .stab.excl
  *(.stab.excl)

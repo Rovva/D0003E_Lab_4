@@ -105,8 +105,8 @@ void printAt(GUI *self, long num, int pos) {
 void update_values(GUI *self) {
 	uint8_t mask;
 	uint8_t temp;
-	printAt(self, self->pulseValue1, 0);
-	printAt(self, self->pulseValue2, 4);
+	printAt(self, self->generator1->CurrentHzValue, 0);
+	printAt(self, self->generator2->CurrentHzValue, 4);
 
 	// LCDDR0 0b00000100 = 1
 	// LCDDR0 0b01000000 = 2
@@ -124,7 +124,7 @@ void update_values(GUI *self) {
 	}
 }
 
-void modifyValues(GUI *self) {
+void changeGenerator(GUI *self) {
 
 	ASYNC(self, update_values, 0);
 	if(((PINE >> 2) & 1) == 0) {
@@ -133,6 +133,11 @@ void modifyValues(GUI *self) {
 		self->whichPulse = 1;
 	}
 
+}
+
+void modifyValues(GUI *self) {
+
+	ASYNC(self, update_values, 0);
 	if(((PINB >> 6) & 1) == 0) {
 		AFTER(MSEC(100), self, repeatIncrease, self->whichPulse );
 	} else if(((PINB >> 7) & 1) == 0) {
@@ -141,23 +146,9 @@ void modifyValues(GUI *self) {
 
 	if(((PINB >> 4) & 1) == 0) {
 		if(self->whichPulse == 0) {
-
-			if(self->pulseValue1 == 0) {
-				self->pulseValue1 = self->generator1->CurrentHzValue;
-				//self->pulseValue1 = ASYNC(self->generator1, getCurrentPulseValue, 0);
-			} else {
-				ASYNC(self->generator1, updatePulseValue, self->pulseValue1);
-			}
-
+			ASYNC(self->generator1, updatePulseValue, 0);
 		} else {
-
-			if(self->pulseValue2 == 0) {
-				self->pulseValue2 = self->generator2->CurrentHzValue;
-				//self->pulseValue1 = ASYNC(self->generator2, getCurrentPulseValue, 0);
-			} else {
-				ASYNC(self->generator2, updatePulseValue, self->pulseValue2);
-			}
-
+			ASYNC(self->generator2, updatePulseValue, 0);
 		}
 	}
 }
@@ -172,7 +163,12 @@ void repeatIncrease(GUI *self, int pulseGenerator) {
 
 void increaseValue(GUI *self, int pulseGenerator) {
 	int temp;
-
+	if(pulseGenerator == 0) {
+		ASYNC(self->generator1, increaseFrequency, 0);
+	} else {
+		ASYNC(self->generator2, increaseFrequency, 0);
+	}
+	/*
 	if(pulseGenerator == 0) {
 		temp = self->pulseValue1;
 		if(temp < 99) {
@@ -185,7 +181,7 @@ void increaseValue(GUI *self, int pulseGenerator) {
 			temp++;
 		}
 		self->pulseValue2 = temp;
-	}
+	}*/
 }
 
 void repeatDecrease(GUI *self, int pulseGenerator) {
@@ -198,7 +194,12 @@ void repeatDecrease(GUI *self, int pulseGenerator) {
 
 void decreaseValue(GUI *self, int pulseGenerator) {
 	int temp;
-
+	if(pulseGenerator == 0) {
+		ASYNC(self->generator1, decreaseFrequency, 0);
+	} else {
+		ASYNC(self->generator2, decreaseFrequency, 0);
+	}
+/*
 	if(pulseGenerator == 0) {
 		temp = self->pulseValue1;
 		if(temp > 0) {
@@ -211,5 +212,5 @@ void decreaseValue(GUI *self, int pulseGenerator) {
 			temp--;
 		}
 		self->pulseValue2 = temp;
-	}
+	}*/
 }

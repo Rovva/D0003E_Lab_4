@@ -9,19 +9,24 @@
 #define GENERATOR_H_
 
 #include "TinyTimber.h"
+#include "Writer.h"
 
 typedef struct {
 	Object super;
+	Writer *writer;
 	uint8_t CurrentHzValue;
 	uint8_t OldHzValue;
 	uint8_t GeneratorNr;
+	uint8_t updated;
 } Generator;
 
-void updatePulseValue(Generator *self, uint8_t newValue);
-uint8_t getGeneratorNumber(Generator *self);
-uint8_t getCurrentPulseValue(Generator *self);
-uint8_t getOldPulseValue(Generator *self);
+void updatePulseValue(Generator *self);
 
-#define init_Generator(hz, nr){ initObject(), hz, hz, nr };
+void increaseFrequency(Generator *self);
+void decreaseFrequency(Generator *self);
+
+void updateWriter(Generator *self);
+
+#define init_Generator(writer, hz, nr){ initObject(), writer, hz, hz, nr, 0 }
 
 #endif /* GENERATOR_H_ */

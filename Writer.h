@@ -8,5 +8,14 @@
 #ifndef WRITER_H_
 #define WRITER_H_
 
+#include "TinyTimber.h"
+
+typedef struct {
+	Object super;
+} Writer;
+
+void writeToPort(Writer *self, uint8_t whichPulse);
+
+#define init_Writer(){ initObject() }
 
 #endif /* WRITER_H_ */
