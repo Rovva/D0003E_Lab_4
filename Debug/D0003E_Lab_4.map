@@ -500,7 +500,7 @@ END GROUP
  *(.fini0)
                 0x000000000000342c                _etext = .
 
-.data           0x0000000000800100       0x30 load address 0x000000000000342c
+.data           0x0000000000800100       0x32 load address 0x000000000000342c
                 0x0000000000800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega169.o
@@ -526,75 +526,76 @@ END GROUP
                 0x000000000080010a                gen2
  .data.gui      0x0000000000800114        0xe main.o
                 0x0000000000800114                gui
- .data.joy      0x0000000000800122        0x6 main.o
+ .data.joy      0x0000000000800122        0x7 main.o
                 0x0000000000800122                joy
- .data.msgPool  0x0000000000800128        0x2 TinyTimber.o
-                0x0000000000800128                msgPool
+ .data.msgPool  0x0000000000800129        0x2 TinyTimber.o
+                0x0000000000800129                msgPool
  .data.threadPool
-                0x000000000080012a        0x2 TinyTimber.o
-                0x000000000080012a                threadPool
+                0x000000000080012b        0x2 TinyTimber.o
+                0x000000000080012b                threadPool
  .data.activeStack
-                0x000000000080012c        0x2 TinyTimber.o
-                0x000000000080012c                activeStack
- .data.current  0x000000000080012e        0x2 TinyTimber.o
-                0x000000000080012e                current
+                0x000000000080012d        0x2 TinyTimber.o
+                0x000000000080012d                activeStack
+ .data.current  0x000000000080012f        0x2 TinyTimber.o
+                0x000000000080012f                current
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.r*)
-                0x0000000000800130                . = ALIGN (0x2)
-                0x0000000000800130                _edata = .
-                0x0000000000800130                PROVIDE (__data_end, .)
+                0x0000000000800132                . = ALIGN (0x2)
+ *fill*         0x0000000000800131        0x1 
+                0x0000000000800132                _edata = .
+                0x0000000000800132                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800130      0x357
-                0x0000000000800130                PROVIDE (__bss_start, .)
+.bss            0x0000000000800132      0x357
+                0x0000000000800132                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x0000000000800130        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega169.o
- .bss           0x0000000000800130        0x0 main.o
- .bss           0x0000000000800130        0x0 init_lcd.o
- .bss           0x0000000000800130        0x0 init_buttons.o
- .bss           0x0000000000800130        0x0 Writer.o
- .bss           0x0000000000800130        0x0 TinyTimber.o
- .bss           0x0000000000800130        0x0 Joystick.o
- .bss           0x0000000000800130        0x0 Generator.o
- .bss           0x0000000000800130        0x0 GUI.o
- .bss           0x0000000000800130        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
- .bss           0x0000000000800130        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
- .bss           0x0000000000800130        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
- .bss           0x0000000000800130        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
- .bss           0x0000000000800130        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
- .bss           0x0000000000800130        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
- .bss           0x0000000000800130        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(setjmp.o)
+ .bss           0x0000000000800132        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega169.o
+ .bss           0x0000000000800132        0x0 main.o
+ .bss           0x0000000000800132        0x0 init_lcd.o
+ .bss           0x0000000000800132        0x0 init_buttons.o
+ .bss           0x0000000000800132        0x0 Writer.o
+ .bss           0x0000000000800132        0x0 TinyTimber.o
+ .bss           0x0000000000800132        0x0 Joystick.o
+ .bss           0x0000000000800132        0x0 Generator.o
+ .bss           0x0000000000800132        0x0 GUI.o
+ .bss           0x0000000000800132        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodsi4.o)
+ .bss           0x0000000000800132        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_negsi2.o)
+ .bss           0x0000000000800132        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .bss           0x0000000000800132        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+ .bss           0x0000000000800132        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000800132        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodsi4.o)
+ .bss           0x0000000000800132        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(setjmp.o)
  *(.bss*)
- .bss.writer    0x0000000000800130        0x4 main.o
-                0x0000000000800130                writer
- .bss.msgQ      0x0000000000800134        0x2 TinyTimber.o
-                0x0000000000800134                msgQ
- .bss.timerQ    0x0000000000800136        0x2 TinyTimber.o
-                0x0000000000800136                timerQ
+ .bss.writer    0x0000000000800132        0x4 main.o
+                0x0000000000800132                writer
+ .bss.msgQ      0x0000000000800136        0x2 TinyTimber.o
+                0x0000000000800136                msgQ
+ .bss.timerQ    0x0000000000800138        0x2 TinyTimber.o
+                0x0000000000800138                timerQ
  .bss.timestamp
-                0x0000000000800138        0x4 TinyTimber.o
-                0x0000000000800138                timestamp
+                0x000000000080013a        0x4 TinyTimber.o
+                0x000000000080013a                timestamp
  .bss.overflows
-                0x000000000080013c        0x2 TinyTimber.o
-                0x000000000080013c                overflows
+                0x000000000080013e        0x2 TinyTimber.o
+                0x000000000080013e                overflows
  *(COMMON)
- COMMON         0x000000000080013e      0x349 TinyTimber.o
-                0x000000000080013e                otable
-                0x0000000000800162                threads
-                0x00000000008001d6                mtable
-                0x00000000008001fa                thread0
-                0x0000000000800217                messages
-                0x0000000000800307                stacks
-                0x0000000000800487                PROVIDE (__bss_end, .)
+ COMMON         0x0000000000800140      0x349 TinyTimber.o
+                0x0000000000800140                otable
+                0x0000000000800164                threads
+                0x00000000008001d8                mtable
+                0x00000000008001fc                thread0
+                0x0000000000800219                messages
+                0x0000000000800309                stacks
+                0x0000000000800489                PROVIDE (__bss_end, .)
                 0x000000000000342c                __data_load_start = LOADADDR (.data)
-                0x000000000000345c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000000000000345e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800487        0x0
+.noinit         0x0000000000800489        0x0
                 [!provide]                        PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                        PROVIDE (__noinit_end, .)
-                0x0000000000800487                _end = .
+                0x0000000000800489                _end = .
                 [!provide]                        PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
@@ -634,9 +635,9 @@ END GROUP
  .stab          0x00000000000035d0      0x978 GUI.o
                                         0xbdc (size before relaxing)
 
-.stabstr        0x0000000000000000     0x1a9f
+.stabstr        0x0000000000000000     0x1ab5
  *(.stabstr)
- .stabstr       0x0000000000000000     0x1a9f main.o
+ .stabstr       0x0000000000000000     0x1ab5 main.o
 
 .stab.excl
  *(.stab.excl)
