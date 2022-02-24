@@ -17,3 +17,17 @@ void writeToPort(Writer *self, uint8_t whichPulse) {
 		LCDDR1 = LCDDR1 ^ 0b00000010;
 	}
 }
+// Disable the output for the specified generator
+void disableOutput(Writer *self, uint8_t whichPulse) {
+	uint8_t temp = 0;
+	uint8_t mask = 0;
+	if(whichPulse == 0) {
+		mask = 0b11111110;
+		temp = LCDDR3 & mask;
+		LCDDR3 = temp;
+	} else {
+		mask = 0b11111101;
+		temp = LCDDR1 & mask;
+		LCDDR1 = temp;
+	}
+}

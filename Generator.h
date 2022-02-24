@@ -27,6 +27,6 @@ void decreaseFrequency(Generator *self);
 
 void updateWriter(Generator *self);
 
-#define init_Generator(writer, hz, nr){ initObject(), writer, hz, hz, nr, 0 }
+#define initGenerator(writer, hz, nr){ initObject(), writer, hz, hz, nr, 0 }
 
 #endif /* GENERATOR_H_ */

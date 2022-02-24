@@ -12,10 +12,12 @@
 
 typedef struct {
 	Object super;
+
 } Writer;
 
 void writeToPort(Writer *self, uint8_t whichPulse);
+void disableOutput(Writer *self, uint8_t whichPulse);
 
-#define init_Writer(){ initObject() }
+#define initWriter(){ initObject() }
 
 #endif /* WRITER_H_ */

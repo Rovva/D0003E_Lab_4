@@ -105,17 +105,14 @@ void printAt(GUI *self, long num, int pos) {
 void update_values(GUI *self) {
 	uint8_t mask;
 	uint8_t temp;
-
-	/*if(self->firstRun == true) {
-		ASYNC(self->generator1, updateWriter, self->generator1);
-		ASYNC(self->generator2, updateWriter, self->generator2);
-		self->firstRun = false;
-	}*/
+	// Display current values for Generator 1 and 2
 	printAt(self, self->generator1->CurrentHzValue, 0);
 	printAt(self, self->generator2->CurrentHzValue, 4);
 
 	// LCDDR0 0b00000100 = 1
 	// LCDDR0 0b01000000 = 2
+	// If Generator 1 then show a symbol 1 for that generator (S1)
+	// otherwise symbol 2 (S2)
 	if(self->whichPulse == 0) {
 		LCDDR0 = LCDDR0 | 0b00000100;
 		mask = 0b10111111;
@@ -131,8 +128,9 @@ void update_values(GUI *self) {
 }
 
 void changeGenerator(GUI *self) {
-
+	// Make a ASYNC call to update_values to correctly show changes
 	ASYNC(self, update_values, 0);
+	// If pressing left or right, then change active generator
 	if(((PINE >> 2) & 1) == 0) {
 		self->whichPulse = 0;
 	} else if(((PINE >> 3) & 1) == 0) {
@@ -142,14 +140,17 @@ void changeGenerator(GUI *self) {
 }
 
 void modifyValues(GUI *self) {
-
+	// Make a ASYNC call to update_values
 	ASYNC(self, update_values, 0);
+	// If pressing Up or Down, then increase or decrease values
+	// for the active generator
 	if(((PINB >> 6) & 1) == 0) {
 		AFTER(MSEC(100), self, repeatIncrease, self->whichPulse );
 	} else if(((PINB >> 7) & 1) == 0) {
 		AFTER(MSEC(100), self, repeatDecrease, self->whichPulse );
 	}
-
+	// If pressing Center then call a ASYNC call to updatePulseValue
+	// in the active generator
 	if(((PINB >> 4) & 1) == 0) {
 		if(self->whichPulse == 0) {
 			ASYNC(self->generator1, updatePulseValue, 0);
@@ -159,6 +160,7 @@ void modifyValues(GUI *self) {
 	}
 }
 
+// Method to slowly increase the frequency value in the active generator
 void repeatIncrease(GUI *self, int pulseGenerator) {
 	if(((PINB >> 6) & 1) == 0) {
 		ASYNC(self, increaseValue, pulseGenerator);
@@ -166,30 +168,16 @@ void repeatIncrease(GUI *self, int pulseGenerator) {
 		AFTER(MSEC(1500), self, repeatIncrease, pulseGenerator);
 	}
 }
-
+// Method to increase the frequency by 1 in the active generator
 void increaseValue(GUI *self, int pulseGenerator) {
-	int temp;
+
 	if(pulseGenerator == 0) {
 		ASYNC(self->generator1, increaseFrequency, 0);
 	} else {
 		ASYNC(self->generator2, increaseFrequency, 0);
 	}
-	/*
-	if(pulseGenerator == 0) {
-		temp = self->pulseValue1;
-		if(temp < 99) {
-			temp++;
-		}
-		self->pulseValue1 = temp;
-	} else if(pulseGenerator == 1) {
-		temp = self->pulseValue2;
-		if(temp < 99) {
-			temp++;
-		}
-		self->pulseValue2 = temp;
-	}*/
 }
-
+// Same as above but decreasing instead
 void repeatDecrease(GUI *self, int pulseGenerator) {
 	if(((PINB >> 7) & 1) == 0) {
 		ASYNC(self, decreaseValue, pulseGenerator);
@@ -197,26 +185,12 @@ void repeatDecrease(GUI *self, int pulseGenerator) {
 		AFTER(MSEC(1500), self, repeatDecrease, pulseGenerator);
 	}
 }
-
+// Same as above but decreasing instead
 void decreaseValue(GUI *self, int pulseGenerator) {
-	int temp;
+
 	if(pulseGenerator == 0) {
 		ASYNC(self->generator1, decreaseFrequency, 0);
 	} else {
 		ASYNC(self->generator2, decreaseFrequency, 0);
 	}
-/*
-	if(pulseGenerator == 0) {
-		temp = self->pulseValue1;
-		if(temp > 0) {
-			temp--;
-		}
-		self->pulseValue1 = temp;
-	} else if(pulseGenerator == 1) {
-		temp = self->pulseValue2;
-		if(temp > 0) {
-			temp--;
-		}
-		self->pulseValue2 = temp;
-	}*/
 }
