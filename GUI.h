@@ -28,8 +28,6 @@ void writeChar(GUI *self, char ch, int pos);
 void printAt(GUI *self, long num, int pos);
 
 void update_values(GUI *self);
-void changeGenerator(GUI *self);
-void modifyValues(GUI *self);
 
 void repeatIncrease(GUI *self, int pulseGenerator);
 void increaseValue(GUI *self, int pulseGenerator);

@@ -8,12 +8,13 @@
 #include "GUI.h"
 #include "Generator.h"
 #include "Writer.h"
-
+#include "Joystick.h"
 // Create all the objects needed
 Writer writer = initWriter();
 Generator gen1 = initGenerator(&writer, 0, 0);
 Generator gen2 = initGenerator(&writer, 0, 1);
 GUI gui = initGUI(&gen1, &gen2);
+Joystick joy = initJoystick(&gui);
 
 int main(void)
 {
@@ -26,8 +27,8 @@ int main(void)
 	init_buttons();
 
 	// Install interrupts for joystick
-	INSTALL(&gui, changeGenerator, IRQ_PCINT0);
-	INSTALL(&gui, modifyValues, IRQ_PCINT1);
-
+	INSTALL(&joy, joystickInterrupt, IRQ_PCINT0);
+	INSTALL(&joy, joystickInterrupt, IRQ_PCINT1);
+	gui.previousButton = 1;
 	return TINYTIMBER(&gui, update_values, 0);
 }

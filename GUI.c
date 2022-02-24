@@ -6,7 +6,6 @@
 #include "TinyTimber.h"
 
 #include "GUI.h"
-#include "init_buttons.h"
 #include "Generator.h"
 
 uint16_t digitLookUp(GUI *self, uint8_t c) {
@@ -127,48 +126,14 @@ void update_values(GUI *self) {
 	}
 }
 
-void changeGenerator(GUI *self) {
-	// Make a ASYNC call to update_values to correctly show changes
-	ASYNC(self, update_values, 0);
-	// If pressing left or right, then change active generator
-	if(((PINE >> 2) & 1) == 0) {
-		self->whichPulse = 0;
-	} else if(((PINE >> 3) & 1) == 0) {
-		self->whichPulse = 1;
-	}
-
-}
-
-void modifyValues(GUI *self) {
-	// Make a ASYNC call to update_values
-	ASYNC(self, update_values, 0);
-	// If pressing Up or Down, then increase or decrease values
-	// for the active generator
-	if(((PINB >> 6) & 1) == 0) {
-		AFTER(MSEC(100), self, repeatIncrease, self->whichPulse );
-	} else if(((PINB >> 7) & 1) == 0) {
-		AFTER(MSEC(100), self, repeatDecrease, self->whichPulse );
-	}
-	// If pressing Center then call a ASYNC call to updatePulseValue
-	// in the active generator
-	if(((PINB >> 4) & 1) == 0) {
-		if(self->whichPulse == 0) {
-			ASYNC(self->generator1, updatePulseValue, 0);
-		} else {
-			ASYNC(self->generator2, updatePulseValue, 0);
-		}
-	}
-}
-
-// Method to slowly increase the frequency value in the active generator
 void repeatIncrease(GUI *self, int pulseGenerator) {
 	if(((PINB >> 6) & 1) == 0) {
 		ASYNC(self, increaseValue, pulseGenerator);
 		ASYNC(self, update_values, 0);
-		AFTER(MSEC(1500), self, repeatIncrease, pulseGenerator);
+		AFTER(MSEC(100), self, repeatIncrease, pulseGenerator);
 	}
 }
-// Method to increase the frequency by 1 in the active generator
+
 void increaseValue(GUI *self, int pulseGenerator) {
 
 	if(pulseGenerator == 0) {
@@ -177,15 +142,15 @@ void increaseValue(GUI *self, int pulseGenerator) {
 		ASYNC(self->generator2, increaseFrequency, 0);
 	}
 }
-// Same as above but decreasing instead
+
 void repeatDecrease(GUI *self, int pulseGenerator) {
 	if(((PINB >> 7) & 1) == 0) {
 		ASYNC(self, decreaseValue, pulseGenerator);
 		ASYNC(self, update_values, 0);
-		AFTER(MSEC(1500), self, repeatDecrease, pulseGenerator);
+		AFTER(MSEC(100), self, repeatDecrease, pulseGenerator);
 	}
 }
-// Same as above but decreasing instead
+
 void decreaseValue(GUI *self, int pulseGenerator) {
 
 	if(pulseGenerator == 0) {
