@@ -3,12 +3,13 @@
 #include "TinyTimber.h"
 
 #include "init_lcd.h"
-#include "init_buttons.h"
+#include "init_io.h"
 
 #include "GUI.h"
 #include "Generator.h"
 #include "Writer.h"
 #include "Joystick.h"
+
 // Create all the objects needed
 Writer writer = initWriter();
 Generator gen1 = initGenerator(&writer, 0, 0);
@@ -22,13 +23,12 @@ int main(void)
 	CLKPR  = 0x80;
 	CLKPR  = 0x00;
 
-	// Initialize LCD and Joystick
+	// Initialize LCD and input/output
 	init_lcd();
-	init_buttons();
+	init_io();
 
 	// Install interrupts for joystick
 	INSTALL(&joy, joystickInterrupt, IRQ_PCINT0);
 	INSTALL(&joy, joystickInterrupt, IRQ_PCINT1);
-	gui.previousButton = 1;
 	return TINYTIMBER(&gui, update_values, 0);
 }

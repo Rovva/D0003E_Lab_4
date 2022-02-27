@@ -17,7 +17,7 @@ typedef struct {
 	uint8_t CurrentHzValue;
 	uint8_t OldHzValue;
 	uint8_t GeneratorNr;
-	uint8_t updated;
+	bool updated;
 } Generator;
 
 void updatePulseValue(Generator *self);

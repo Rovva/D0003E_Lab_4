@@ -8,13 +8,20 @@
 #include "GUI.h"
 
 void joystickInterrupt(Joystick *self) {
+	// Update the display
 	ASYNC(self->gui, update_values, 0);
+	
+	//  If Up or Down is pressed
 	if(((PINB >> 6) & 1) == 0) {
-		SYNC(self->gui, repeatIncrease, self->gui->whichPulse );
+		// Repeat until button is no longer pressed
+		self->gui->firstpress = false;
+		ASYNC(self->gui, repeatIncrease, self->gui->whichPulse );
 	} else if(((PINB >> 7) & 1) == 0) {
-		SYNC(self->gui, repeatDecrease, self->gui->whichPulse );
+		self->gui->firstpress = false;
+		ASYNC(self->gui, repeatDecrease, self->gui->whichPulse );
 	}
 
+	// If Center is pressed, save frequency and reset
 	if(((PINB >> 4) & 1) == 0) {
 		if(self->gui->whichPulse == 0) {
 			ASYNC(self->gui->generator1, updatePulseValue, 0);
@@ -22,6 +29,8 @@ void joystickInterrupt(Joystick *self) {
 			ASYNC(self->gui->generator2, updatePulseValue, 0);
 		}
 	}
+
+	// If Left or Right is pressed then change active pulse generator input
 	if(((PINE >> 2) & 1) == 0) {
 		self->gui->whichPulse = 0;
 	} else if(((PINE >> 3) & 1) == 0) {

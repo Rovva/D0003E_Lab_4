@@ -18,9 +18,7 @@ typedef struct {
 	uint8_t whichPulse;
 	Generator *generator1;
 	Generator *generator2;
-	uint8_t previousButton;
-	uint8_t firstpress;
-	bool firstRun;
+	bool firstpress;
 } GUI;
 
 uint16_t digitLookUp(GUI *self, uint8_t c);
@@ -35,6 +33,6 @@ void increaseValue(GUI *self, int pulseGenerator);
 void decreaseValue(GUI *self, int pulseGenerator);
 void repeatDecrease(GUI *self, int pulseGenerator);
 
-#define initGUI(gen1, gen2){ initObject(), 1, 0, 0, gen1, gen2, 0, 0, true }
+#define initGUI(gen1, gen2){ initObject(), 1, 0, 0, gen1, gen2, true }
 
 #endif /* GUI_H_ */
