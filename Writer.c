@@ -29,22 +29,20 @@ void disableOutput(Writer *self, uint8_t whichPulse) {
 }
 */
 
-// Write to PORT E pin 6 or 4
+// Write to PORT E bit 4 or 6 (Pin 1 or 3 on PORTE)
 void writeToPort(Writer *self, uint8_t whichPulse) {
 	if(whichPulse == 0) {
-		//PORTE = ^(1<<6);
-		PORTE = PORTE ^ 0b01000000;
-	} else {
-		//PORTE = ^(1<<4);
 		PORTE = PORTE ^ 0b00010000;
+	} else {
+		PORTE = PORTE ^ 0b01000000;
 	}
 }
 
-// Disable the output for either pin 6 or 4
+// Disable the output for either bit 4 or 6 (Pin 1 or 3 on PORTE)
 void disableOutput(Writer *self, uint8_t whichPulse) {
 	if(whichPulse == 0) {
-		PORTE = PORTE & 0b10111111;
-	} else {
 		PORTE = PORTE & 0b11101111;
+	} else {
+		PORTE = PORTE & 0b10111111;
 	}
 }

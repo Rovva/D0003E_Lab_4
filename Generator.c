@@ -8,30 +8,27 @@
 
 // Method that saves a value and resets frequency to 0
 void updatePulseValue(Generator *self) {
+	uint8_t temp = 0;
 	// If the generator has not been updated
 	if(self->updated == 0 && self->CurrentHzValue != 0) {
 		// Save current frequency in temp
-		uint8_t temp = self->CurrentHzValue;
+		temp = self->CurrentHzValue;
 		// Save the value in temp to the variable OldHzValue
 		self->OldHzValue = temp;
 		// Set the current frequency to 0
 		self->CurrentHzValue = 0;
-
 		self->updated = true;
+	} else if(self->CurrentHzValue == 0) {
+		temp = self->OldHzValue;
+		self->CurrentHzValue = temp;
+		self->updated = false;
+		updateWriter(self);
 	} else {
-		// If the current frequency is zero, simply restore a old saved value
-		if(self->CurrentHzValue == 0) {
-			self->CurrentHzValue = self->OldHzValue;
-			updateWriter(self);
-		// If the current frequency is not zero, save the current value
-		} else {
-			self->CurrentHzValue = self->OldHzValue;
-			self->OldHzValue = 0;
-			self->updated = false;
-			updateWriter(self);
-		}
+		temp = self->OldHzValue;
+		self->CurrentHzValue = temp;
+		self->updated = false;
+		updateWriter(self);
 	}
-
 }
 // Increase the frequency by 1
 void increaseFrequency(Generator *self) {

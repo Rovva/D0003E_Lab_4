@@ -19,6 +19,8 @@ typedef struct {
 	Generator *generator1;
 	Generator *generator2;
 	bool firstpress;
+	uint8_t previousButton;
+	uint8_t buttonPressed;
 } GUI;
 
 uint16_t digitLookUp(GUI *self, uint8_t c);
@@ -26,6 +28,9 @@ void writeChar(GUI *self, char ch, int pos);
 void printAt(GUI *self, long num, int pos);
 
 void update_values(GUI *self);
+
+void setButtonPressed(GUI *self, int i);
+void setFirstPress(GUI *self, bool i);
 
 void repeatIncrease(GUI *self, int pulseGenerator);
 void increaseValue(GUI *self, int pulseGenerator);

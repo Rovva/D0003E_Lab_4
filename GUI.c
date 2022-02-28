@@ -126,17 +126,26 @@ void update_values(GUI *self) {
 		LCDDR0 = temp;
 	}
 }
+
+void setButtonPressed(GUI *self, int i) {
+	self->buttonPressed = i;
+}
+
+void setFirstPress(GUI *self, bool i) {
+	self->firstpress = i;
+}
+
 // Increase frequency with 1 Hz
 void increaseValue(GUI *self, int pulseGenerator) {
 	if(pulseGenerator == 0) {
 		ASYNC(self->generator1, increaseFrequency, 0);
-		} else {
+	} else {
 		ASYNC(self->generator2, increaseFrequency, 0);
 	}
 }
 // Repeat increase in frequency until button is no longer pressed
 void repeatIncrease(GUI *self, int pulseGenerator) {
-	if(((PINB >> 6) & 1) == 0 && self->firstpress == false) {
+	if(self->buttonPressed == 1 && self->firstpress == false) {
 		ASYNC(self, increaseValue, pulseGenerator);
 		ASYNC(self, update_values, 0);
 		AFTER(MSEC(400), self, repeatIncrease, pulseGenerator);
@@ -154,7 +163,7 @@ void decreaseValue(GUI *self, int pulseGenerator) {
 }
 // Repeat decrease in frequency until button is no longer pressed
 void repeatDecrease(GUI *self, int pulseGenerator) {
-	if(((PINB >> 7) & 1) == 0 && self->firstpress == false) {
+	if(self->buttonPressed == 2 && self->firstpress == false) {
 		ASYNC(self, decreaseValue, pulseGenerator);
 		ASYNC(self, update_values, 0);
 		AFTER(MSEC(400), self, repeatDecrease, pulseGenerator);
@@ -162,4 +171,3 @@ void repeatDecrease(GUI *self, int pulseGenerator) {
 		self->firstpress = true;
 	}
 }
-
